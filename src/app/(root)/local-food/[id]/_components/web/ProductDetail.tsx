@@ -1,14 +1,14 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import Loading from '@/components/common/Loading';
 import supabase from '@/utils/supabase/client';
+import { useQuery } from '@tanstack/react-query';
 
+import PayButton from '@/components/common/PayButton';
 import { useState } from 'react';
+import { AddCartButton } from '../../../_components/AddCartButton';
 import { CountButton } from '../CountButton';
 import { DeliveryInfo } from '../DeliveryInfo';
-import { AddCartButton } from '../../../_components/AddCartButton';
-import PayButton from '@/components/common/PayButton';
 import { DiscountAmount } from '../DiscountAmount';
 
 const DELIVERY = 2500;
@@ -56,6 +56,8 @@ export const ProductDetail = ({
 
   if (isPending) return <Loading />;
   if (error) return <div>오류 {error.message}</div>;
+
+  const orderNameArr = [orderData?.food_name as string];
 
   return (
     <div className="w-[540px] bg-white rounded-tr-[12px] rounded-br-[12px] border border-l-0 border-[#E0E0E0]">
@@ -105,7 +107,7 @@ export const ProductDetail = ({
             />
             <PayButton
               product={product}
-              orderNameArr={[orderData.food_name]}
+              orderNameArr={orderNameArr}
               text={'바로 구매하기'}
             />
           </div>
