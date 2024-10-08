@@ -29,6 +29,7 @@ const FixedButtons = ({
       quantity: count ?? 0
     }
   ];
+  const orderNameArr = [food?.food_name as string];
 
   return (
     <>
@@ -44,7 +45,7 @@ const FixedButtons = ({
             {isModalOpen ? (
               <PayButton
                 product={product}
-                orderNameArr={[food.food_name]}
+                orderNameArr={orderNameArr}
                 text={'바로 구매하기'}
               />
             ) : (
