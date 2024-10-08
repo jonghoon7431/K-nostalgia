@@ -116,9 +116,7 @@ const PayButton = ({ orderNameArr, product, text }: Props) => {
           process.env.NODE_ENV === 'production'
             ? `https://https://k-nostalgia-one.vercel.app/check-payment?totalQuantity=${totalQuantity}`
             : `http://localhost:3000/check-payment?totalQuantity=${totalQuantity}`,
-        noticeUrls: [
-          `https://https://k-nostalgia-one.vercel.app/api/payment/webhook`
-        ],
+        noticeUrls: [`https://k-nostalgia-one.vercel.app/api/payment/webhook`],
 
         customer: {
           customerId: id,
@@ -136,6 +134,7 @@ const PayButton = ({ orderNameArr, product, text }: Props) => {
           }
         }
       });
+
       const paymentId = response?.paymentId;
 
       if (response?.code != null) {
